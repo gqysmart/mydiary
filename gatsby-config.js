@@ -6,5 +6,13 @@ module.exports = {
     title: `My Diary`,
     siteUrl: `https://www.yourdomain.tld`,
   },
-  plugins: [],
+  plugins: [
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: `diary`,
+        path: `${__dirname}/diary`,
+      },
+    },
+  ],
 }

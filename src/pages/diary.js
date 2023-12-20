@@ -1,16 +1,29 @@
 import * as React from "react"
-import {Link} from "gatsby"
+import {Link, graphql} from "gatsby"
 import Layout from "../components/layout"
 import {StaticImage} from "gatsby-plugin-image"
 import Seo from "../components/seo"
 
-const DiaryPage = () => {
+const DiaryPage = ({data}) => {
   return (
-    <Layout pageTitle="My diary posts">
-      <p>this is my diary list</p>
+    <Layout pageTitle="My Diary">
+      <ul>
+        {data.allFile.nodes.map((node) => (
+          <li key={node.name}>{node.name}</li>
+        ))}
+      </ul>
     </Layout>
   )
 }
 
 export const Head = () => <Seo title="My Diaries"></Seo>
+export const query = graphql`
+  query {
+    allFile {
+      nodes {
+        name
+      }
+    }
+  }
+`
 export default DiaryPage
