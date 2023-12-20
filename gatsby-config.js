@@ -14,5 +14,8 @@ module.exports = {
         path: `${__dirname}/diary`,
       },
     },
+    "gatsby-plugin-image",
+    "gatsby-plugin-mdx",
+    "gatsby-plugin-sharp",
   ],
 }
