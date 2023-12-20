@@ -7,11 +7,12 @@ import Seo from "../components/seo"
 const DiaryPage = ({data}) => {
   return (
     <Layout pageTitle="My Diary">
-      <ul>
-        {data.allFile.nodes.map((node) => (
-          <li key={node.name}>{node.name}</li>
-        ))}
-      </ul>
+      {data.allMdx.nodes.map((node) => (
+        <article>
+          <h2>{node.frontmatter.title}</h2>
+          <p>{node.excerpt}</p>
+        </article>
+      ))}
     </Layout>
   )
 }
@@ -19,9 +20,15 @@ const DiaryPage = ({data}) => {
 export const Head = () => <Seo title="My Diaries"></Seo>
 export const query = graphql`
   query {
-    allFile {
+    allMdx(sort: {frontmatter: {date: DESC}}) {
       nodes {
-        name
+        id
+        excerpt
+        frontmatter {
+          date
+          slug
+          title
+        }
       }
     }
   }

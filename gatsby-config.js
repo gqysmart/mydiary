@@ -12,6 +12,7 @@ module.exports = {
       options: {
         name: `diary`,
         path: `${__dirname}/diary`,
+        ignore: [`**/\.*`],
       },
     },
     "gatsby-plugin-image",
